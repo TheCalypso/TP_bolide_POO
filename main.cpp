@@ -2,23 +2,27 @@
 
 class Buzzer {
     public:
-        Buzzer(PinName br_buzzer):
-            _buzzer(br_buzzer){
-                _buzzer.period_ms(1);
-                _buzzer.write(0.0);
-            }
-
-        void start(){
-            _buzzer.write(0.5);
-        }
-
-        void stop(){
-            _buzzer.write(0.0);
-        }
+        Buzzer(PinName br_buzzer);
+        void start();
+        void stop();
 
     private:
         PwmOut _buzzer;
 };
+
+Buzzer::Buzzer(PinName br_buzzer):
+    _buzzer(br_buzzer){
+        _buzzer.period_ms(1);
+        _buzzer.write(0.0);
+    };
+
+void Buzzer::start(){
+    _buzzer.write(0.5);
+}
+
+void Buzzer::stop(){
+    _buzzer.write(0.0);
+}
 
 Buzzer mybuzzer(A1);
 
